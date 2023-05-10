@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    cluster-autoscaler.kubernetes.io/safe-to-evict: "false"
+  labels:
+    jenkins-slave-label: k6-runner
+spec:
+  serviceAccountName: jenkins-release
+  imagePullSecrets:
+    - name: dockerregcred
+  containers:
+    - name: kubehelm
+      image: dtzar/helm-kubectl:3.4.2
+      command:
+        - cat
+      tty: true
+      resources:
+        requests:
+          memory: 128Mi
+          cpu: 100m
+        limits:
+          memory: 128Mi
+          cpu: 100m
+      volumeMounts:
+        - mountPath: /root/.cache/helm
+          name: helm3-cache
+        - mountPath: /root/.config/helm
+          name: helm3-config
+        - mountPath: /root/.local/share/helm
+          name: helm3-data
+        - mountPath: /opt/results
+          name: file-server-data
+    - name: k6-runner
+      image: avit9228/k6-extension-runner:0.43.1
+      command:
+        - cat
+      tty: true
+      resources:
+        requests:
+          memory: 1920Mi
+          cpu: 500m
+        limits:
+          memory: 1920Mi
+          cpu: 500m
+  volumes:
+    - name: m2-volume
+      persistentVolumeClaim:
+        claimName: maven-efs-pv-claim
+    - name: helm3-cache
+      persistentVolumeClaim:
+        claimName: helm3-cache-efs-pv-claim
+    - name: helm3-config
+      persistentVolumeClaim:
+        claimName: helm3-config-efs-pv-claim
+    - name: helm3-data
+      persistentVolumeClaim:
+        claimName: helm3-data-efs-pv-claim
+    - name: file-server-data
+      persistentVolumeClaim:
+        claimName: file-server-efs-pv-claim

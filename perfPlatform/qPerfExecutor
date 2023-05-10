@@ -1,0 +1,57 @@
+pipeline {
+    agent {
+            kubernetes {
+                  yamlFile 'perfPlatform/Jenkins-Slave-Pod.yaml'
+            }
+    }
+
+    parameters {
+          //All the project related custom parameters should be define under here
+          string(defaultValue: "sample_Script.js", description: 'k6 script name', name: 'scriptName')
+    }
+
+    stages {
+            stage('Execute Performance Test') {
+                steps {
+                    container('k6-runner'){
+                        script {
+                                 sh 'pwd'
+                                 sh 'sleep 1s'
+                                 sh 'K6_INFLUXDB_ORGANIZATION=qperf K6_INFLUXDB_BUCKET=prod_k6 K6_INFLUXDB_TOKEN=vcgrjECCMCjncIPpUThU6ohRoN_2wLo_ynZwGBILfG7QbdE3NoQaYQqzTHk6LkFVEqZ2CTsL8ik2t9R-9bYTOw== k6 run -o xk6-influxdb=http://influxdb2-release:8086 ./src/test/k6/${scriptName}'
+                        }
+                    }
+                }
+            }
+            stage('Publish K6 Performance Test Results') {
+                            steps {
+                                container('k6-runner'){
+                                    script {
+                                            sh 'pwd'
+                                            sh 'echo =======================Read K6 results==============='
+                                            publishHTML target: [
+                                            allowMissing: false,
+                                            alwaysLinkToLastBuild: false,
+                                            keepAll: true,
+                                            reportDir: './',
+                                            reportFiles: 'k6summary.html',
+                                            reportName: 'k6-report'
+                                            ]
+                                     'echo =======================Finish reading K6 results==============='
+                                    }
+                                }
+                            }
+                        }
+
+
+            stage('Backup K6 results files') {
+                            steps {
+                                container('kubehelm'){
+                                    sh 'echo ==============Start K6 Result Backup Process ========================'
+                                    sh 'pwd'
+                                    sh 'for pod in $(kubectl get pod -l app.kubernetes.io/component=jenkins-controller -o custom-columns=:metadata.name); do kubectl cp $pod:/var/jenkins_home/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/htmlreports/k6-report/ /opt/results/jenkins/${JOB_NAME}/${BUILD_NUMBER}/;done;'
+                                    sh 'echo ==============Finished K6 Result Backup Process ========================'
+                              }
+                     }
+                }
+    }
+}
