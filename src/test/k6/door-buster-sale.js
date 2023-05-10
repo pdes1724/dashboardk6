@@ -26,6 +26,12 @@ export const options = {
         },
     },
 }
+
+export default function () {
+    http.get('https://test.k6.io/');
+    sleep(0.25);
+}
+
 tags: {
       test_name: 'TQSV-Dashboard'
   },
@@ -56,8 +62,4 @@ export function handleSummary(data) {
     'k6summary.html': htmlReport(data, { debug: false }),
     stdout: textSummary(data, { indent: ' ', enableColors: true }),
   }
-}
-export default function () {
-    http.get('https://test.k6.io/');
-    sleep(0.25);
 }
