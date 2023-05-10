@@ -39,9 +39,8 @@ tags: {
 };
 
 let requestTrend1 = new Trend('Request1')
-let requestTrend2 = new Trend('Request2')
 
-export function contacts() {
+export function k6_demo() {
   let resp;
   resp=http.get('https://test.k6.io/contacts.php', {
     tags: { custom_tag: 'k6_demo' },
