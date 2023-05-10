@@ -11,7 +11,9 @@ export const options = {
 export default function () {
   http.get('https://test.k6.io/');
 }
-
+tags: {
+      test_name: 'TQSV-dash'
+  },
 export function handleSummary(data) {
   return {
     'k6summary.html': htmlReport(data, { debug: false }),
