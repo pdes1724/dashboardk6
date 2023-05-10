@@ -26,12 +26,6 @@ export const options = {
         },
     },
 }
-
-export default function () {
-    http.get('https://test.k6.io/');
-    sleep(0.25);
-}
-
 tags: {
       test_name: 'TQSV-Dashboard'
   },
@@ -40,12 +34,14 @@ tags: {
 
 let requestTrend1 = new Trend('Request1')
 
-export function k6_demo() {
-  let resp;
-  resp=http.get('https://test.k6.io/contacts.php', {
+
+export default function () {
+let resp;
+  resp=http.get('https://test.k6.io/', {
     tags: { custom_tag: 'k6_demo' },
   });
   requestTrend1.add(resp.timings.duration)
+    sleep(0.25);
 }
 
 
