@@ -24,7 +24,7 @@ export const options = {
     },
   },
   tags: {
-      test_name: 'TQSV-QPerf'
+      test_name: 'TQSV-Qdashb'
   },
   summaryTrendStats: ["min", "max", "avg","med", "p(90)", "p(95)","p(99)", "count"],
 };
@@ -32,21 +32,13 @@ export const options = {
 let requestTrend1 = new Trend('Request1')
 let requestTrend2 = new Trend('Request2')
 
-export function contacts() {
-  let resp;
-  resp=http.get('https://test.k6.io/contacts.php', {
-    tags: { custom_tag: 'contacts' },
-  });
-  requestTrend1.add(resp.timings.duration)
-}
-
-export function news() {
-  let resp;
-  resp=http.get('https://test.k6.io/news.php', {
-    tags: { custom_tag: 'news' } ,
-  });
-  requestTrend2.add(resp.timings.duration)
-}
+export const options = {
+  vus: 10,
+  duration: '10s',
+  thresholds: {
+    'http_reqs{expected_response:true}': ['rate>10'],
+  },
+};
 
 export function handleSummary(data) {
   return {
