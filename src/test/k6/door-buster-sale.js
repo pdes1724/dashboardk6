@@ -44,18 +44,11 @@ let requestTrend2 = new Trend('Request2')
 export function contacts() {
   let resp;
   resp=http.get('https://test.k6.io/contacts.php', {
-    tags: { custom_tag: 'contacts' },
+    tags: { custom_tag: 'k6_demo' },
   });
   requestTrend1.add(resp.timings.duration)
 }
 
-export function news() {
-  let resp;
-  resp=http.get('https://test.k6.io/news.php', {
-    tags: { custom_tag: 'news' } ,
-  });
-  requestTrend2.add(resp.timings.duration)
-}
 
 export function handleSummary(data) {
   return {
