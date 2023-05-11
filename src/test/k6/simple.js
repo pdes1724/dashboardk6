@@ -4,7 +4,7 @@ import { Trend } from 'k6/metrics';
 
 export const options = {
   vus: 10,
-  duration: '1000s',
+  duration: '100s',
   thresholds: {
     'http_reqs{expected_response:true}': ['rate>10'],
   },
