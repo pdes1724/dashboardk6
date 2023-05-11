@@ -7,7 +7,8 @@ import { sleep } from "k6";
 export const options = {
     scenarios: {
         k6_demo: {
-            executor: 'ramping-arrival-rate',
+            executor: 'constant-arrival-rate',
+            exec: 'k6_demo',
             startRate: 10,
             stages: [
                 // Level at 10 iters/s for 10 seconds
@@ -35,7 +36,7 @@ tags: {
 let requestTrend1 = new Trend('Request1')
 
 
-export default function () {
+export default k6_demo () {
 let resp;
   resp=http.get('https://test.k6.io/', {
     tags: { custom_tag: 'k6_demo' },
