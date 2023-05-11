@@ -27,28 +27,3 @@ export const options = {
         },
     },
 }
-tags: {
-      test_name: 'TQSV-Dashboard'
-  },
-  summaryTrendStats: ["min", "max", "avg","med", "p(90)", "p(95)","p(99)", "count"],
-};
-
-let requestTrend1 = new Trend('Request1')
-
-
-export default k6_demo () {
-let resp;
-  resp=http.get('https://test.k6.io/', {
-    tags: { custom_tag: 'k6_demo' },
-  });
-  requestTrend1.add(resp.timings.duration)
-    sleep(0.25);
-}
-
-
-export function handleSummary(data) {
-  return {
-    'k6summary.html': htmlReport(data, { debug: false }),
-    stdout: textSummary(data, { indent: ' ', enableColors: true }),
-  }
-}
