@@ -11,7 +11,7 @@ export const options = {
   },
   tags: {
         test_name: 'TQSV-TestDB'
-        test_id: ${__ENV.TEST_ID}
+        test_id: '${__ENV.TEST_ID}'
     },
   summaryTrendStats: ["min", "max", "avg","med", "p(90)", "p(95)", "count"],
 };
