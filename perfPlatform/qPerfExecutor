@@ -51,7 +51,7 @@ pipeline {
                                     sh 'echo ==============Start K6 Result Backup Process ========================'
                                     sh 'pwd'
                                     sh 'for pod in $(kubectl get pod -l app.kubernetes.io/component=jenkins-controller -o custom-columns=:metadata.name); do kubectl cp $pod:/var/jenkins_home/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/htmlreports/k6-report/ /opt/results/jenkins/${JOB_NAME}/${BUILD_NUMBER}/;done;'
-                                    sh 'mvn clean install -DbuildNo=${BUILD_NUMBER}'
+                                    sh '-DbuildNo=${BUILD_NUMBER}'
                                     sh 'echo ${BUILD_NUMBER}'
                                     sh 'echo ==============Finished K6 Result Backup Process ========================'
                               }
