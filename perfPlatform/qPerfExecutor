@@ -18,8 +18,7 @@ pipeline {
                                  sh 'pwd'
                                  sh 'sleep 1s'
                                  sh 'K6_INFLUXDB_ORGANIZATION=qperf K6_INFLUXDB_BUCKET=qa K6_INFLUXDB_TOKEN=mycXs5gMOMqJ39i8tOCSvH7zxMTthVp2KqycRmlzQp1o8xz7CN__YooMMjNvtFUGeeWa4L1MFP66hU4sNZenOQ== k6 run -o xk6-influxdb=http://influxdb-2-test-release-influxdb2.qa.svc.cluster.local:80 ./src/test/k6/${scriptName}'
-                                 sh 'mvn clean install -DbuildNo=${BUILD_NUMBER}'
-                                 sh 'echo ${BUILD_NUMBER}'
+
                                //sh 'K6_INFLUXDB_ORGANIZATION=qperf K6_INFLUXDB_BUCKET=prod_k6 K6_INFLUXDB_TOKEN=vcgrjECCMCjncIPpUThU6ohRoN_2wLo_ynZwGBILfG7QbdE3NoQaYQqzTHk6LkFVEqZ2CTsL8ik2t9R-9bYTOw== k6 run -o xk6-influxdb=http://influxdb2-release:8086 ./src/test/k6/${scriptName}'
                         }
                     }
@@ -52,6 +51,8 @@ pipeline {
                                     sh 'echo ==============Start K6 Result Backup Process ========================'
                                     sh 'pwd'
                                     sh 'for pod in $(kubectl get pod -l app.kubernetes.io/component=jenkins-controller -o custom-columns=:metadata.name); do kubectl cp $pod:/var/jenkins_home/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/htmlreports/k6-report/ /opt/results/jenkins/${JOB_NAME}/${BUILD_NUMBER}/;done;'
+                                    sh 'mvn clean install -DbuildNo=${BUILD_NUMBER}'
+                                    sh 'echo ${BUILD_NUMBER}'
                                     sh 'echo ==============Finished K6 Result Backup Process ========================'
                               }
                      }
