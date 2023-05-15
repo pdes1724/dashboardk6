@@ -3,9 +3,6 @@ import { textSummary } from 'https://jslib.k6.io/k6-summary/0.0.1/index.js'
 import http from 'k6/http';
 import { Trend } from 'k6/metrics';
 
-function print(){
-console.log('${__ENV.TEST_ID}');
-}
 
 export const options = {
 
@@ -16,7 +13,8 @@ export const options = {
   },
   tags: {
         test_name: 'TQSV-TestDB',
-        test_id: '${__ENV.TEST_ID}'
+        test_id: '${__ENV.TEST_ID}',
+        console.log('${__ENV.TEST_ID}')
     },
   summaryTrendStats: ["min", "max", "avg","med", "p(90)", "p(95)", "count"],
 };
