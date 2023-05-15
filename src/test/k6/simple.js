@@ -2,7 +2,7 @@ import { htmlReport } from 'https://raw.githubusercontent.com/benc-uk/k6-reporte
 import { textSummary } from 'https://jslib.k6.io/k6-summary/0.0.1/index.js'
 import http from 'k6/http';
 import { Trend } from 'k6/metrics';
-import {TEST_ID} from './perfPlatform/qPerfExecutor'
+import {TEST_ID} from 'perfPlatform/qPerfExecutor';
 
 
 export const options = {
