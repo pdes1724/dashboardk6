@@ -4,8 +4,9 @@ import http from 'k6/http';
 import { Trend } from 'k6/metrics';
 
 function print(){
-console.log(${__ENV.TEST_ID});
+console.log('${__ENV.TEST_ID}');
 }
+
 export const options = {
 
   vus: 10,
