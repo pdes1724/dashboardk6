@@ -9,12 +9,9 @@ export const options = {
   thresholds: {
     'http_reqs{expected_response:true}': ['rate>10'],
   },
-
-  ${__ENV.TEST_ID} = test_id,
-
   tags: {
         test_name: 'TQSV-TestDB',
-        test_id:
+        test_id: let ${__ENV.TEST_ID}
     },
   summaryTrendStats: ["min", "max", "avg","med", "p(90)", "p(95)", "count"],
 };
