@@ -17,7 +17,7 @@ pipeline {
                         script {
                                  sh 'pwd'
                                  sh 'sleep 1s'
-                                 sh 'K6_INFLUXDB_ORGANIZATION=qperf K6_INFLUXDB_BUCKET=qa K6_INFLUXDB_TOKEN=mycXs5gMOMqJ39i8tOCSvH7zxMTthVp2KqycRmlzQp1o8xz7CN__YooMMjNvtFUGeeWa4L1MFP66hU4sNZenOQ== k6 run --tag TEST_ID=${BUILD_NUMBER} -o xk6-influxdb=http://influxdb-2-test-release-influxdb2.qa.svc.cluster.local:80 ./src/test/k6/${scriptName} '
+                                 sh 'K6_INFLUXDB_ORGANIZATION=qperf K6_INFLUXDB_BUCKET=qa K6_INFLUXDB_TOKEN=mycXs5gMOMqJ39i8tOCSvH7zxMTthVp2KqycRmlzQp1o8xz7CN__YooMMjNvtFUGeeWa4L1MFP66hU4sNZenOQ== k6 run --tag TEST_ID=${BUILD_NUMBER} --tag test_name="TQSV-TestDB" -o xk6-influxdb=http://influxdb-2-test-release-influxdb2.qa.svc.cluster.local:80 ./src/test/k6/${scriptName} '
                                  //sh 'export {TEST_ID}'
                                  // sh '-DbuildNo=${BUILD_NUMBER}'
                                  //sh 'echo ${BUILD_NUMBER}'

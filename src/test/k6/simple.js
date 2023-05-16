@@ -12,9 +12,7 @@ export const options = {
   thresholds: {
     'http_reqs{expected_response:true}': ['rate>10'],
   },
-  tags: {
-        test_name: 'TQSV-TestDB'
-    },
+
   summaryTrendStats: ["min", "max", "avg","med", "p(90)", "p(95)", "count"],
 };
 
