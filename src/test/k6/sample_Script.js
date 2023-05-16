@@ -23,9 +23,7 @@ export const options = {
       timeUnit: "1s",
     },
   },
-  tags: {
-      test_name: 'TQSV-dashb'
-  },
+
   summaryTrendStats: ["min", "max", "avg","med", "p(90)", "p(95)","p(99)", "count"],
 };
 
