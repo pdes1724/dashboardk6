@@ -12,6 +12,12 @@ export const options = {
     'http_reqs{expected_response:true}': ['rate>10'],
   },
 
+  const res = http.get('http://test.k6.io/');
+      check(res, {
+        'is status 200': (r) => r.status === 200,
+      });
+
+
   summaryTrendStats: ["min", "max", "avg","med", "p(90)", "p(95)", "count"],
 };
 

@@ -24,10 +24,6 @@ export const options = {
     },
   },
 
-  const res = http.get('http://test.k6.io/');
-    check(res, {
-      'is status 200': (r) => r.status === 200,
-    });
 
   summaryTrendStats: ["min", "max", "avg","med", "p(90)", "p(95)","p(99)", "count"],
 };
@@ -37,7 +33,7 @@ let requestTrend2 = new Trend('Request2')
 
 export function contacts() {
   let resp;
-  resp=http.get('https://test.6.io/contacts.php', {
+  resp=http.get('https://test.k6.io/contacts.php', {
     tags: { custom_tag: 'contacts' },
   });
   requestTrend1.add(resp.timings.duration)
