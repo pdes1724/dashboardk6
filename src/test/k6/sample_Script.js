@@ -23,8 +23,6 @@ export const options = {
       timeUnit: "1s",
     },
   },
-
-
   summaryTrendStats: ["min", "max", "avg","med", "p(90)", "p(95)","p(99)", "count"],
 };
 
@@ -33,7 +31,7 @@ let requestTrend2 = new Trend('Request2')
 
 export function contacts() {
   let resp;
-  resp=http.get('https://test.k6.io/contacts.php', {
+  resp=http.get('https://test.k6.io/contats.php', {
     tags: { custom_tag: 'contacts' },
   });
 
