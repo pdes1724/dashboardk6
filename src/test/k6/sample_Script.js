@@ -36,6 +36,12 @@ export function contacts() {
   resp=http.get('https://test.k6.io/contacts.php', {
     tags: { custom_tag: 'contacts' },
   });
+
+  const res = http.get('http://test.k6.io/');
+      check(res, {
+        'is status 200': (r) => r.status === 200,
+      });
+
   requestTrend1.add(resp.timings.duration)
 }
 
