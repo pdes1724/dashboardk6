@@ -37,11 +37,6 @@ export function contacts() {
     tags: { custom_tag: 'contacts' },
   });
 
-  const res = http.get('http://test.k6.io/');
-      check(res, {
-        'is status 200': (r) => r.status === 200,
-      });
-
   requestTrend1.add(resp.timings.duration)
 }
 
@@ -51,6 +46,13 @@ export function news() {
     tags: { custom_tag: 'news' } ,
   });
   requestTrend2.add(resp.timings.duration)
+}
+
+export default function () {
+  const res = http.get('http://test.k6.io/');
+  check(res, {
+    'is status 200': (r) => r.status === 200,
+  });
 }
 
 export function handleSummary(data) {
