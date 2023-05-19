@@ -10,7 +10,7 @@ export default function () {
     'is status 200': (r) => r.status === 200,
     'body size is 11,105 bytes': (r) => r.body.length == 11105,
     'is status 400': (r) => r.status === 400,
-  }),
+  });
 
   const nes = http.get('http://test.k6.io/');
     check(nes, {
