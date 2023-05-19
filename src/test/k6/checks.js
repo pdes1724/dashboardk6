@@ -12,7 +12,7 @@ export default function () {
     'is status 400': (r) => r.status === 400,
   });
 
-  export default function () {
+  export function tes() {
     const res = http.get('http://test.k6.io/');
     check(res, {
       'is status 200': (r) => r.status === 200,
