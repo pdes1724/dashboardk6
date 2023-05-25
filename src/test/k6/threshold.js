@@ -17,6 +17,10 @@ export const options = {
     // Trend: Percentiles, averages, medians, and minimums
     // must be within specified milliseconds.
     'RTT': ['p(99)<300', 'p(70)<250', 'avg<200', 'med<150', 'min<100'],
+    // http errors should be less than 1%
+    http_req_failed: ['rate<0.01'],
+    // 95% of requests should be below 200ms
+    http_req_duration: ['p(95)<200'],
   },
 };
 
