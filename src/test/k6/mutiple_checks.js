@@ -27,18 +27,28 @@ export const options = {
   summaryTrendStats: ["min", "max", "avg","med", "p(90)", "p(95)","p(99)", "count"],
 };
 
-let requestTrend1 = new Trend('Request1')
-let requestTrend2 = new Trend('Request2')
+//let requestTrend1 = new Trend('Request1')
+//let requestTrend2 = new Trend('Request2')
 
 export function contacts() {
 const res = http.get('http://test.k6.io/');
    check(res, {
       'is status 200': (r) => r.status === 200,
+      'is status 400': (r) => r.status === 400,
+      'body size is 11,105 bytes': (r) => r.body.length == 11105,
+      //'is status 400': (r) => r.status === 400,
+    });
+     //tags: { custom_tag: 'contacts' },
+     //requestTrend1.add(res.timings.duration)
+}
+
+export default function () {
+  const res = http.get('http://test.k6.io/');
+   check(res, {
+      'is status 200': (r) => r.status === 200,
       'body size is 11,105 bytes': (r) => r.body.length == 11105,
       'is status 400': (r) => r.status === 400,
     });
-     //tags: { custom_tag: 'contacts' },
-     requestTrend1.add(res.timings.duration)
 }
 
 export function news() {
@@ -50,8 +60,10 @@ export function news() {
         'is status 400': (r) => r.status === 400,
       });
   //tags: { custom_tag: 'news' } ,
-  requestTrend2.add(res.timings.duration)
+  //requestTrend2.add(res.timings.duration)
 }
+
+
 
 
 export function handleSummary(data) {
