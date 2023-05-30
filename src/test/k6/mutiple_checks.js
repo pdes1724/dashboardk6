@@ -30,29 +30,26 @@ let requestTrend1 = new Trend('Request1')
 let requestTrend2 = new Trend('Request2')
 
 export function contacts() {
-  let resp;
-  resp=http.get('https://test.k6.io/contacts.php', {
-    tags: { custom_tag: 'contacts' },
-    check(resp, {
-          'is status 200': (r) => r.status === 200,
-          'body size is 11,105 bytes': (r) => r.body.length == 11105,
-          'is status 400': (r) => r.status === 400,
-        });
-  });
+const res = http.get('http://test.k6.io/');
+   check(res, {
+   tags: { custom_tag: 'contacts' },
+      'is status 200': (r) => r.status === 200,
+      'body size is 11,105 bytes': (r) => r.body.length == 11105,
+      'is status 400': (r) => r.status === 400,
+    });
 
   requestTrend1.add(resp.timings.duration)
 }
 
 export function news() {
-  let resp;
-  resp=http.get('https://test.k6.io/news.php', {
-    tags: { custom_tag: 'news' } ,
-    check(resp, {
-              'is status 200': (r) => r.status === 200,
-              'body size is 11,105 bytes': (r) => r.body.length == 11105,
-              'is status 400': (r) => r.status === 400,
-            });
-  });
+  const res = http.get('http://test.k6.io/');
+     check(res, {
+     tags: { custom_tag: 'news' } ,
+        'is status 200': (r) => r.status === 200,
+        'body size is 11,105 bytes': (r) => r.body.length == 11105,
+        'is status 400': (r) => r.status === 400,
+      });
+
   requestTrend2.add(resp.timings.duration)
 }
 
