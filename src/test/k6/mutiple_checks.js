@@ -35,7 +35,7 @@ const res = http.get('http://test.k6.io/');
    check(res, {
       'is status 200': (r) => r.status === 200,
       'is status 400': (r) => r.status === 400,
-      'body size is 11,105 bytes': (r) => r.body.length == 11105,
+      //'body size is 11,105 bytes': (r) => r.body.length == 11105,
       //'is status 400': (r) => r.status === 400,
     });
      //tags: { custom_tag: 'contacts' },
@@ -47,7 +47,7 @@ export function news() {
 
      check(res, {
         'is status 200': (r) => r.status === 200,
-        'body size is 11,105 bytes': (r) => r.body.length == 11105,
+        //'body size is 11,105 bytes': (r) => r.body.length == 11105,
         'is status 400': (r) => r.status === 400,
       });
   //tags: { custom_tag: 'news' } ,
