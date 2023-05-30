@@ -38,7 +38,7 @@ const res = http.get('http://test.k6.io/');
       'is status 400': (r) => r.status === 400,
     });
 
-  requestTrend1.add(resp.timings.duration)
+  requestTrend1.add(res.timings.duration)
 }
 
 export function news() {
@@ -50,7 +50,7 @@ export function news() {
         'is status 400': (r) => r.status === 400,
       });
 
-  requestTrend2.add(resp.timings.duration)
+  requestTrend2.add(res.timings.duration)
 }
 
 
