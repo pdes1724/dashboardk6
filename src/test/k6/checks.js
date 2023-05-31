@@ -5,7 +5,7 @@ import { textSummary } from 'https://jslib.k6.io/k6-summary/0.0.1/index.js'
 import { Trend } from 'k6/metrics';
 
 export default function () {
-  const res = http.get('http://tesasst.k6.io/');
+  const res = http.get('http://test.k6.io/');
    check(res, {
       'is status 200': (r) => r.status === 200,
       'body size is 11,105 bytes': (r) => r.body.length == 11105,
