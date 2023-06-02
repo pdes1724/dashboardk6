@@ -43,7 +43,7 @@ const res = http.get('http://test.kdd86.io/');
 }
 
 export function news() {
-  const res = http.get('http://test.kdd6.io/');
+  const res = http.get('http://test.kdd346.io/');
 
      check(res, {
         'is status 200': (r) => r.status === 200,

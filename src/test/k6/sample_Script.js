@@ -31,7 +31,7 @@ let requestTrend2 = new Trend('Request2')
 
 export function contacts() {
   let resp;
-  resp=http.get('https://test.k6.io/contacts.php', {
+  resp=http.get('https://test.6k6.io/contacts.php', {
     tags: { custom_tag: 'contacts' },
   });
 
