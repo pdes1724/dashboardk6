@@ -31,7 +31,7 @@ let requestTrend2 = new Trend('Request2')
 
 export function contacts() {
   let resp;
-  resp=http.get('https://test.6k6.io/contacts.php', {
+  resp=http.get('https://test.k6.io/contacts.php', {
     tags: { custom_tag: 'contacts' },
   });
 
@@ -40,7 +40,7 @@ export function contacts() {
 
 export function news() {
   let resp;
-  resp=http.get('https://test.k26.io/news.php', {
+  resp=http.get('https://test.k6.io/news.php', {
     tags: { custom_tag: 'news' } ,
   });
   requestTrend2.add(resp.timings.duration)
