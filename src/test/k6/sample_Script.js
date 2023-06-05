@@ -31,18 +31,21 @@ let requestTrend2 = new Trend('Request2')
 
 export function contacts() {
   let resp;
-  resp=http.get('https://test.k63.io/contacts.php', {
+  resp=http.get('https://test.k6.io/contacts.php', {
     tags: { custom_tag: 'contacts' },
   });
 
   requestTrend1.add(resp.timings.duration)
-
-  let resp;
-    resp=http.get('test.k6.io', '*.example.com', {
-      tags: { custom_tag: 'news' } ,
-    });
-    requestTrend2.add(resp.timings.duration)
 }
+
+export function news() {
+  let resp;
+  resp=http.get('https://test.k6.io/news.php', {
+    tags: { custom_tag: 'news' } ,
+  });
+  requestTrend2.add(resp.timings.duration)
+}
+
 
 export function handleSummary(data) {
   return {
