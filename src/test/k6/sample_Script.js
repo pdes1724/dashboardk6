@@ -36,16 +36,13 @@ export function contacts() {
   });
 
   requestTrend1.add(resp.timings.duration)
-}
 
-export function news() {
   let resp;
-  resp=http.get('test.k6.io', '*.example.com', {
-    tags: { custom_tag: 'news' } ,
-  });
-  requestTrend2.add(resp.timings.duration)
+    resp=http.get('test.k6.io', '*.example.com', {
+      tags: { custom_tag: 'news' } ,
+    });
+    requestTrend2.add(resp.timings.duration)
 }
-
 
 export function handleSummary(data) {
   return {
