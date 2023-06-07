@@ -2,7 +2,7 @@ import { check } from 'k6';
 import { vu, scenario } from 'k6/execution';
 import http from 'k6/http';
 import { SharedArray } from 'k6/data';
-import * as CONFIG from '../config.js'
+import * as CONFIG from '../lib/config.js'
 import papaparse from 'https://jslib.k6.io/papaparse/5.1.1/index.js';
 import { htmlReport } from 'https://raw.githubusercontent.com/benc-uk/k6-reporter/2.4.0/dist/bundle.js'
 import { textSummary } from 'https://jslib.k6.io/k6-summary/0.0.1/index.js'
