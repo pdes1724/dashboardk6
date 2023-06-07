@@ -1,4 +1,4 @@
-const { ConfigHelper } = require('./helper/configHelper.js');
+const { ConfigHelper } = require('./lib/configHelper.js');
 
 // Durations in seconds
 export const RAMP_UP = __ENV.RAMP_UP ? __ENV.RAMP_UP : 0;
