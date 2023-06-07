@@ -14,7 +14,7 @@ const loadFrequency = parseInt(70 * CONFIG.TARGET_LOAD);
 const noVus = parseInt(7 * CONFIG.TARGET_LOAD);
 
 const csvData = new SharedArray('getOpcoProductDetails', () => {
-    return papaparse.parse(open('../../data/Get_Opco_Product_Details_test_data.csv'), { header: true, skipEmptyLines: true }).data;
+    return papaparse.parse(open('../testdata/Get_Opco_Product_Details_test_data.csv'), { header: true, skipEmptyLines: true }).data;
 });
 
 function getAuthToken() {
