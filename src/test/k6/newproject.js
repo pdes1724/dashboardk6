@@ -10,8 +10,8 @@ import { Trend } from 'k6/metrics';
 
 
 //Init Code
-const loadFrequency = parseInt(70 * CONFIG.TARGET_LOAD);
-const noVus = parseInt(20 * CONFIG.TARGET_LOAD);
+const loadFrequency = parseInt(2 * CONFIG.TARGET_LOAD);
+const noVus = parseInt(1 * CONFIG.TARGET_LOAD);
 
 const csvData = new SharedArray('getOpcoProductDetails', () => {
     return papaparse.parse(open('../testdata/Get_Opco_Product_Details_test_data.csv'), { header: true, skipEmptyLines: true }).data;
@@ -83,7 +83,7 @@ export const getOpcoProductDetails = (data) => {
 
     const entryNo = itrNoGlobal % csvData.length;
 
-    const endpoint = `${CONFIG.BASE_URL}/opcos/${csvData[entryNo].opcos}/products/${csvData[entryNo].supcs}?lang=${csvData[entryNo].lang}`;
+    const endpoint = `${CONFIG.BASE_URL}/opcos/${csvData[entryNo].opcos}/product/${csvData[entryNo].supcs}?lang=${csvData[entryNo].lang}`;
 
     let res = http.get(endpoint, params);
 
