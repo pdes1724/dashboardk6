@@ -2,7 +2,7 @@ const { ConfigHelper } = require('../lib/configHelper.js');
 
 // Durations in seconds
 export const RAMP_UP = __ENV.RAMP_UP ? __ENV.RAMP_UP : 0;
-export const HOLD_DURATION = __ENV.HOLD_DURATION ? __ENV.HOLD_DURATION : 3;
+export const HOLD_DURATION = __ENV.HOLD_DURATION ? __ENV.HOLD_DURATION : 10;
 export const TEAR_DOWN = __ENV.TEAR_DOWN ? __ENV.TEAR_DOWN : 0;
 
 // Environment specific

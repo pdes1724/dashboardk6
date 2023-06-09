@@ -10,7 +10,7 @@ import { Trend } from 'k6/metrics';
 
 
 //Init Code
-const loadFrequency = parseInt(1 * CONFIG.TARGET_LOAD);
+const loadFrequency = parseInt(10 * CONFIG.TARGET_LOAD);
 const noVus = parseInt(1 * CONFIG.TARGET_LOAD);
 
 const csvData = new SharedArray('getOpcoProductDetails', () => {
