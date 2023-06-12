@@ -40,7 +40,7 @@ export function contacts() {
 
 export function news() {
   let resp;
-  resp=http.get('https://httpstat.us/400', {
+  resp=http.get('https://test.k6.io/newsss.php', {
     tags: { custom_tag: 'news' } ,
   });
   requestTrend2.add(resp.timings.duration)
