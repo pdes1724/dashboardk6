@@ -83,7 +83,7 @@ export const getOpcoProductDetails = (data) => {
 
     const entryNo = itrNoGlobal % csvData.length;
 
-    const endpoint = `${CONFIG.BASE_URL}/opcos/${csvData[entryNo].opcos}/products/${csvData[entryNo].supcs}?lang=${csvData[entryNo].lang}`;
+    const endpoint = `${CONFIG.BASE_URL}/opcos/${csvData[entryNo].opcos}/produc/${csvData[entryNo].supcs}?lang=${csvData[entryNo].lang}`;
 
     let res = http.get(endpoint, params);
 
