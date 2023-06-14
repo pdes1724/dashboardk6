@@ -31,7 +31,7 @@ export const options = {
 //let requestTrend2 = new Trend('Request2')
 
 export function contacts() {
-const res = http.get('http://test.k6.io/');
+const res = http.get('https://httpstat.us/400');
    check(res, {
       'is status 200': (r) => r.status === 200,
       'is status 400': (r) => r.status === 400,
@@ -43,7 +43,7 @@ const res = http.get('http://test.k6.io/');
 }
 
 export function news() {
-  const res = http.get('http://test.k6.io/');
+  const res = http.get('https://httpstat.us/500');
 
      check(res, {
         'is status 200': (r) => r.status === 200,
