@@ -43,7 +43,7 @@ const res = http.get('https://httpstat.us/400');
 }
 
 export function news() {
-  const res = http.get('https://test.k6.io/news.php');
+  const res = http.get('https://httpstat.us/500');
 
      check(res, {
         'is status 200': (r) => r.status === 200,
