@@ -34,6 +34,11 @@ export function contacts() {
   resp=http.get('https://test.k6.io/contacts.php', {
     tags: { custom_tag: 'contacts' },
   });
+   check(resp, {
+        'is status 200': (r) => r.status === 200,
+        //'body size is 11,105 bytes': (r) => r.body.length == 11105,
+        'is status 400': (r) => r.status === 400,
+      });
 
   requestTrend1.add(resp.timings.duration)
 }
