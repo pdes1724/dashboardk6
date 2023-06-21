@@ -36,7 +36,7 @@ export function contacts() {
 
   check(resp, {
         'is status 200': (r) => r.status === 200,
-        'is status 400': (r) => r.status === 500,
+        'is status 500': (r) => r.status === 500,
         //'body size is 11,105 bytes': (r) => r.body.length == 11105,
         //'is status 400': (r) => r.status === 400,
    });
