@@ -9,7 +9,7 @@ export const options = {
     contacts: {
       executor: 'constant-arrival-rate',
       exec: 'contacts',
-      duration: '2m',
+      duration: '10m',
       rate: 30,
       preAllocatedVUs: 30,
       timeUnit: "1s",
@@ -17,7 +17,7 @@ export const options = {
     news: {
       executor: 'constant-arrival-rate',
       exec: 'news',
-      duration: '2m',
+      duration: '10m',
       rate: 20,
       preAllocatedVUs: 20,
       timeUnit: "1s",
