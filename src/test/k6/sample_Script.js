@@ -9,7 +9,7 @@ export const options = {
     contacts: {
       executor: 'constant-arrival-rate',
       exec: 'contacts',
-      duration: '10m',
+      duration: '5m',
       rate: 30,
       preAllocatedVUs: 30,
       timeUnit: "1s",
@@ -17,7 +17,7 @@ export const options = {
     news: {
       executor: 'constant-arrival-rate',
       exec: 'news',
-      duration: '10m',
+      duration: '5m',
       rate: 20,
       preAllocatedVUs: 20,
       timeUnit: "1s",
@@ -44,9 +44,7 @@ export function contacts() {
 
 export function news() {
   let resp;
-  resp=http.get('https://httpstat.us/500', {
-    tags: { custom_tag: 'news' } ,
-  });
+  resp=http.get('https://httpstat.us/500');
   requestTrend2.add(resp.timings.duration)
 }
 
