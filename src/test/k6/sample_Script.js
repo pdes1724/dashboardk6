@@ -32,17 +32,14 @@ let requestTrend2 = new Trend('Request2')
 export function contacts() {
   let resp;
   resp=http.get('https://test.k6.io/contacts.php', {
+   check(resp, {
+          'is status 200': (r) => r.status === 200,
+          //'body size is 11,105 bytes': (r) => r.body.length == 11105,
+          'is status 400': (r) => r.status === 400,
+        });
+
     tags: { custom_tag: 'contacts' },
-
-    check(resp, {
-            'is status 200': (r) => r.status === 200,
-            //'body size is 11,105 bytes': (r) => r.body.length == 11105,
-            'is status 400': (r) => r.status === 400,
-          });
-
   });
-
-
   requestTrend1.add(resp.timings.duration)
 }
 
